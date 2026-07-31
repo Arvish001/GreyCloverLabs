@@ -113,6 +113,13 @@
                 
                 <div class="roi-calculator-card">
                     <div class="roi-inputs">
+                        <div class="roi-inputs-header">
+                            <h3>Estimate Your Savings</h3>
+                            <div class="currency-selector">
+                                <button type="button" class="currency-tab active" data-currency="USD">USD ($)</button>
+                                <button type="button" class="currency-tab" data-currency="INR">INR (₹)</button>
+                            </div>
+                        </div>
                         <div class="slider-group">
                             <div class="slider-header">
                                 <label for="team-size">Team Members Doing Repetitive Tasks</label>
@@ -237,10 +244,10 @@
 
                 <!-- Scenario Selector -->
                 <div class="scenario-tabs reveal">
-                    <button class="scen-btn active" data-scene="leads">📥 Getting Leads</button>
-                    <button class="scen-btn" data-scene="support">💬 Customer Support</button>
-                    <button class="scen-btn" data-scene="reports">📊 Business Reports</button>
-                    <button class="scen-btn" data-scene="followup">📧 Follow-Ups</button>
+                    <button class="scen-btn active" data-scene="leads"><i data-lucide="inbox"></i> Getting Leads</button>
+                    <button class="scen-btn" data-scene="support"><i data-lucide="message-square"></i> Customer Support</button>
+                    <button class="scen-btn" data-scene="reports"><i data-lucide="bar-chart-2"></i> Business Reports</button>
+                    <button class="scen-btn" data-scene="followup"><i data-lucide="mail"></i> Follow-Ups</button>
                 </div>
 
                 <!-- Split Comparison -->
@@ -314,7 +321,7 @@
 
                 <div class="examples-grid">
                     <div class="example-card reveal">
-                        <div class="ex-industry">🏢 Real Estate Agency</div>
+                        <div class="ex-industry"><i data-lucide="home"></i> Real Estate Agency</div>
                         <h3>Problem: 3 staff members spent all day answering the same property questions</h3>
                         <div class="ex-arrow"><i data-lucide="arrow-down"></i> What we did</div>
                         <div class="ex-solution">
@@ -327,7 +334,7 @@
                     </div>
 
                     <div class="example-card reveal">
-                        <div class="ex-industry">🛒 E-Commerce Store</div>
+                        <div class="ex-industry"><i data-lucide="shopping-cart"></i> E-Commerce Store</div>
                         <h3>Problem: Orders and refund requests buried the team every day</h3>
                         <div class="ex-arrow"><i data-lucide="arrow-down"></i> What we did</div>
                         <div class="ex-solution">
@@ -340,7 +347,7 @@
                     </div>
 
                     <div class="example-card reveal">
-                        <div class="ex-industry">⚖️ Law Firm</div>
+                        <div class="ex-industry"><i data-lucide="scale"></i> Law Firm</div>
                         <h3>Problem: Associates spent 6+ hours weekly pulling data for compliance reports</h3>
                         <div class="ex-arrow"><i data-lucide="arrow-down"></i> What we did</div>
                         <div class="ex-solution">
@@ -353,7 +360,7 @@
                     </div>
 
                     <div class="example-card reveal">
-                        <div class="ex-industry">🚚 Logistics Company</div>
+                        <div class="ex-industry"><i data-lucide="truck"></i> Logistics Company</div>
                         <h3>Problem: Sales team manually followed up on every quote — most were forgotten</h3>
                         <div class="ex-arrow"><i data-lucide="arrow-down"></i> What we did</div>
                         <div class="ex-solution">
@@ -376,48 +383,50 @@
                     <h2>Why choose us over anyone else?</h2>
                 </div>
 
-                <div class="compare-table reveal">
-                    <div class="ct-header">
-                        <div class="ct-feature"></div>
-                        <div class="ct-col gcl"><div class="gcl-badge">GreyClover Labs</div></div>
-                        <div class="ct-col other">Big Agencies</div>
-                        <div class="ct-col other">Hiring In-House</div>
-                    </div>
-                    <div class="ct-row">
-                        <div class="ct-feature">Affordable pricing</div>
-                        <div class="ct-col gcl"><i data-lucide="check" class="icon-yes"></i></div>
-                        <div class="ct-col other"><i data-lucide="x" class="icon-no"></i></div>
-                        <div class="ct-col other"><i data-lucide="x" class="icon-no"></i></div>
-                    </div>
-                    <div class="ct-row">
-                        <div class="ct-feature">Built specifically for your business</div>
-                        <div class="ct-col gcl"><i data-lucide="check" class="icon-yes"></i></div>
-                        <div class="ct-col other"><i data-lucide="minus" class="icon-maybe"></i></div>
-                        <div class="ct-col other"><i data-lucide="check" class="icon-yes"></i></div>
-                    </div>
-                    <div class="ct-row">
-                        <div class="ct-feature">No tech knowledge required from you</div>
-                        <div class="ct-col gcl"><i data-lucide="check" class="icon-yes"></i></div>
-                        <div class="ct-col other"><i data-lucide="x" class="icon-no"></i></div>
-                        <div class="ct-col other"><i data-lucide="x" class="icon-no"></i></div>
-                    </div>
-                    <div class="ct-row">
-                        <div class="ct-feature">Ready in 2–4 weeks</div>
-                        <div class="ct-col gcl"><i data-lucide="check" class="icon-yes"></i></div>
-                        <div class="ct-col other"><i data-lucide="x" class="icon-no"></i></div>
-                        <div class="ct-col other"><i data-lucide="x" class="icon-no"></i></div>
-                    </div>
-                    <div class="ct-row">
-                        <div class="ct-feature">Ongoing support included</div>
-                        <div class="ct-col gcl"><i data-lucide="check" class="icon-yes"></i></div>
-                        <div class="ct-col other"><i data-lucide="minus" class="icon-maybe"></i></div>
-                        <div class="ct-col other"><i data-lucide="check" class="icon-yes"></i></div>
-                    </div>
-                    <div class="ct-row">
-                        <div class="ct-feature">Scales as your business grows</div>
-                        <div class="ct-col gcl"><i data-lucide="check" class="icon-yes"></i></div>
-                        <div class="ct-col other"><i data-lucide="minus" class="icon-maybe"></i></div>
-                        <div class="ct-col other"><i data-lucide="x" class="icon-no"></i></div>
+                <div class="compare-table-wrapper reveal">
+                    <div class="compare-table">
+                        <div class="ct-header">
+                            <div class="ct-feature"></div>
+                            <div class="ct-col gcl"><div class="gcl-badge">GreyClover Labs</div></div>
+                            <div class="ct-col other">Big Agencies</div>
+                            <div class="ct-col other">Hiring In-House</div>
+                        </div>
+                        <div class="ct-row">
+                            <div class="ct-feature">Affordable pricing</div>
+                            <div class="ct-col gcl"><i data-lucide="check" class="icon-yes"></i></div>
+                            <div class="ct-col other"><i data-lucide="x" class="icon-no"></i></div>
+                            <div class="ct-col other"><i data-lucide="x" class="icon-no"></i></div>
+                        </div>
+                        <div class="ct-row">
+                            <div class="ct-feature">Built specifically for your business</div>
+                            <div class="ct-col gcl"><i data-lucide="check" class="icon-yes"></i></div>
+                            <div class="ct-col other"><i data-lucide="minus" class="icon-maybe"></i></div>
+                            <div class="ct-col other"><i data-lucide="check" class="icon-yes"></i></div>
+                        </div>
+                        <div class="ct-row">
+                            <div class="ct-feature">No tech knowledge required from you</div>
+                            <div class="ct-col gcl"><i data-lucide="check" class="icon-yes"></i></div>
+                            <div class="ct-col other"><i data-lucide="x" class="icon-no"></i></div>
+                            <div class="ct-col other"><i data-lucide="x" class="icon-no"></i></div>
+                        </div>
+                        <div class="ct-row">
+                            <div class="ct-feature">Ready in 2–4 weeks</div>
+                            <div class="ct-col gcl"><i data-lucide="check" class="icon-yes"></i></div>
+                            <div class="ct-col other"><i data-lucide="x" class="icon-no"></i></div>
+                            <div class="ct-col other"><i data-lucide="x" class="icon-no"></i></div>
+                        </div>
+                        <div class="ct-row">
+                            <div class="ct-feature">Ongoing support included</div>
+                            <div class="ct-col gcl"><i data-lucide="check" class="icon-yes"></i></div>
+                            <div class="ct-col other"><i data-lucide="minus" class="icon-maybe"></i></div>
+                            <div class="ct-col other"><i data-lucide="check" class="icon-yes"></i></div>
+                        </div>
+                        <div class="ct-row">
+                            <div class="ct-feature">Scales as your business grows</div>
+                            <div class="ct-col gcl"><i data-lucide="check" class="icon-yes"></i></div>
+                            <div class="ct-col other"><i data-lucide="minus" class="icon-maybe"></i></div>
+                            <div class="ct-col other"><i data-lucide="x" class="icon-no"></i></div>
+                        </div>
                     </div>
                 </div>
 

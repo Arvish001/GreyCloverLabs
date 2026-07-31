@@ -74,14 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const hoursSavedEl = document.getElementById('hours-saved');
 
     const taskPool = [
-        { icon: '📧', cls: 'green',  label: 'Email reply sent to new lead',       status: 'Done',    isDone: true  },
-        { icon: '✅', cls: 'green',  label: 'Lead scored & added to CRM',          status: 'Done',    isDone: true  },
-        { icon: '📊', cls: 'indigo', label: 'Weekly sales report generating...',   status: 'Working', isDone: false },
-        { icon: '💬', cls: 'green',  label: 'Customer query answered instantly',   status: 'Done',    isDone: true  },
-        { icon: '📅', cls: 'amber',  label: 'Booking confirmation sent',           status: 'Done',    isDone: true  },
-        { icon: '🔍', cls: 'indigo', label: 'Analysing inbound document...',       status: 'Working', isDone: false },
-        { icon: '📩', cls: 'green',  label: 'Follow-up email dispatched',          status: 'Done',    isDone: true  },
-        { icon: '💡', cls: 'amber',  label: 'New lead flagged as high priority',   status: 'Done',    isDone: true  },
+        { icon: 'mail',           cls: 'green',  label: 'Email reply sent to new lead',       status: 'Done',    isDone: true  },
+        { icon: 'check-circle',   cls: 'green',  label: 'Lead scored & added to CRM',          status: 'Done',    isDone: true  },
+        { icon: 'bar-chart-2',    cls: 'indigo', label: 'Weekly sales report generating...',   status: 'Working', isDone: false },
+        { icon: 'message-square', cls: 'green',  label: 'Customer query answered instantly',   status: 'Done',    isDone: true  },
+        { icon: 'calendar',       cls: 'amber',  label: 'Booking confirmation sent',           status: 'Done',    isDone: true  },
+        { icon: 'search',         cls: 'indigo', label: 'Analysing inbound document...',       status: 'Working', isDone: false },
+        { icon: 'send',           cls: 'green',  label: 'Follow-up email dispatched',          status: 'Done',    isDone: true  },
+        { icon: 'lightbulb',      cls: 'amber',  label: 'New lead flagged as high priority',   status: 'Done',    isDone: true  },
     ];
 
     let tasksDone = 47;
@@ -102,11 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const row = document.createElement('div');
         row.className = `task-row${t.isDone ? ' done' : ''}`;
         row.innerHTML = `
-            <div class="task-icon ${t.cls}">${t.icon}</div>
+            <div class="task-icon ${t.cls}"><i data-lucide="${t.icon}"></i></div>
             <span class="task-text">${t.label}</span>
             <span class="task-status ${t.isDone ? 'done' : 'working'}">${t.status}</span>
         `;
         dashTasks.appendChild(row);
+        if (typeof lucide !== 'undefined') lucide.createIcons();
 
         if (t.isDone) {
             tasksDone++;
@@ -125,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ── Before vs After Simulator ─────────────────────────────
     const scenarios = {
         leads: {
-            title: '📥 New Lead Comes In',
+            title: 'New Lead Comes In',
             without: [
                 { time: 'Day 1 — 9am',  text: 'Lead submits a form on your website.' },
                 { time: 'Day 1 — 2pm',  text: 'You finally see the email between meetings.' },
@@ -138,8 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 { time: '2 minutes',   text: 'Lead profile created and scored in your CRM.' },
                 { time: '24 hours',    text: 'AI sends a follow-up. Lead books a call.' },
             ],
-            without_result: '❌ Lead lost. No response after 48+ hours.',
-            with_result:    '✅ Lead booked a meeting — with zero manual effort.',
+            without_result: 'Lead lost. No response after 48+ hours.',
+            with_result:    'Lead booked a meeting — with zero manual effort.',
             metrics: [
                 { num: '130x', label: 'Faster first response' },
                 { num: '40%',  label: 'More leads converted' },
@@ -147,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ]
         },
         support: {
-            title: '💬 Customer Has a Problem',
+            title: 'Customer Has a Problem',
             without: [
                 { time: 'Monday 10am',  text: 'Customer emails asking about their order.' },
                 { time: 'Monday 3pm',   text: 'Support team sees it. Checks the system.' },
@@ -160,8 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 { time: '8 seconds',  text: 'Accurate, helpful reply sent automatically.' },
                 { time: '30 seconds', text: 'Ticket logged and closed. Customer happy.' },
             ],
-            without_result: '❌ Customer frustrated. May leave a bad review.',
-            with_result:    '✅ Customer delighted. Problem solved in under a minute.',
+            without_result: 'Customer frustrated. May leave a bad review.',
+            with_result:    'Customer delighted. Problem solved in under a minute.',
             metrics: [
                 { num: '10x',  label: 'Faster response' },
                 { num: '70%',  label: 'Tickets resolved automatically' },
@@ -169,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ]
         },
         reports: {
-            title: '📊 Monthly Report Needed',
+            title: 'Monthly Report Needed',
             without: [
                 { time: 'Week 1',       text: 'You remind staff to compile data.' },
                 { time: 'Week 2',       text: 'Data arrives in 4 different spreadsheets.' },
@@ -182,8 +183,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 { time: 'Day 1 — 8:05am', text: 'Full report drafted with charts and insights.' },
                 { time: 'Day 1 — 8:10am', text: 'Report emailed to stakeholders automatically.' },
             ],
-            without_result: '❌ 3 weeks wasted. Data often outdated by the time it arrives.',
-            with_result:    '✅ Complete report ready in 10 minutes. Every single month.',
+            without_result: '3 weeks wasted. Data often outdated by the time it arrives.',
+            with_result:    'Complete report ready in 10 minutes. Every single month.',
             metrics: [
                 { num: '99%',  label: 'Time saved on reports' },
                 { num: '100%', label: 'Data accuracy' },
@@ -191,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ]
         },
         followup: {
-            title: '📧 Following Up With a Quote',
+            title: 'Following Up With a Quote',
             without: [
                 { time: 'Day 1',   text: 'You send a quote to a potential client.' },
                 { time: 'Day 5',   text: 'You mean to follow up, but forget.' },
@@ -204,8 +205,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 { time: 'Day 5',  text: 'Client opens the email. AI detects interest.' },
                 { time: 'Day 6',  text: 'AI alerts you: "This lead is ready to close."' },
             ],
-            without_result: '❌ Deal lost. Competitor followed up faster.',
-            with_result:    '✅ Deal won. You were alerted at the perfect moment.',
+            without_result: 'Deal lost. Competitor followed up faster.',
+            with_result:    'Deal won. You were alerted at the perfect moment.',
             metrics: [
                 { num: '40%', label: 'More deals closed' },
                 { num: '3x',  label: 'Faster follow-up' },
@@ -258,8 +259,8 @@ document.addEventListener('DOMContentLoaded', () => {
             withTL.appendChild(el);
         });
 
-        if (withoutRes) withoutRes.textContent = s.without_result;
-        if (withRes)    withRes.textContent    = s.with_result;
+        if (withoutRes) withoutRes.innerHTML = `<i data-lucide="x-circle"></i> ` + s.without_result;
+        if (withRes)    withRes.innerHTML    = `<i data-lucide="check-circle"></i> ` + s.with_result;
 
         if (outBar) {
             outBar.innerHTML = s.metrics.map(m => `
@@ -269,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>`).join('');
         }
 
-        lucide.createIcons();
+        if (typeof lucide !== 'undefined') lucide.createIcons();
     }
 
     // Bind scenario tabs
@@ -293,6 +294,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const hoursSavedCalc = document.getElementById('hours-saved-calc');
     const moneySavedCalc = document.getElementById('money-saved-calc');
 
+    let currentCurrency = 'USD';
+
+    function updateSliderBackground(slider) {
+        if (!slider) return;
+        const min = parseFloat(slider.min) || 0;
+        const max = parseFloat(slider.max) || 100;
+        const val = parseFloat(slider.value);
+        const percentage = ((val - min) / (max - min)) * 100;
+        slider.style.background = `linear-gradient(to right, var(--wine) ${percentage}%, var(--bg-overlay) ${percentage}%)`;
+    }
+
     function updateCalculator() {
         if (!teamSlider || !hoursSlider) return;
         const team = parseInt(teamSlider.value);
@@ -303,12 +315,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Math: Monthly hours saved = Team * Hours/week * 4.33 weeks/month * 80% automated
         const monthlyHours = Math.round(team * hours * 4.33 * 0.8);
-        // Annual Savings = Monthly hours saved * 12 months * loaded labor rate of $35/hour
-        const annualSavings = Math.round(monthlyHours * 12 * 35);
+        
+        // Labor Rates: USD = $35/hour, INR = ₹2,900/hour
+        const rate = currentCurrency === 'USD' ? 35 : 2900;
+        const annualSavings = Math.round(monthlyHours * 12 * rate);
 
         if (hoursSavedCalc) hoursSavedCalc.textContent = monthlyHours.toLocaleString() + 'h';
-        if (moneySavedCalc) moneySavedCalc.textContent = '$' + annualSavings.toLocaleString();
+        
+        if (moneySavedCalc) {
+            if (currentCurrency === 'USD') {
+                moneySavedCalc.textContent = '$' + annualSavings.toLocaleString('en-US');
+            } else {
+                moneySavedCalc.textContent = '₹' + annualSavings.toLocaleString('en-IN');
+            }
+        }
+
+        // Apply visual slider fill background
+        updateSliderBackground(teamSlider);
+        updateSliderBackground(hoursSlider);
     }
+
+    // Currency Switcher Event Listeners
+    const currencyTabs = document.querySelectorAll('.currency-tab');
+    currencyTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            currencyTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            currentCurrency = tab.dataset.currency;
+            updateCalculator();
+        });
+    });
 
     if (teamSlider && hoursSlider) {
         teamSlider.addEventListener('input', updateCalculator);
