@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grey Clover Labs | We Automate Your Business With AI</title>
+    <meta name="description" content="Grey Clover Labs puts AI to work inside your business so you can focus on growing — not on repetitive tasks. Simple, affordable, and built for businesses like yours.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css?v=4.0">
+</head>
+<body>
+
+    <!-- SVG Noise filter for premium tactile feel -->
+    <svg style="display: none;">
+        <filter id="noise-filter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" />
+            <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.035 0" />
+        </filter>
+    </svg>
+
+    <!-- Floating background blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- ===== NAVBAR ===== -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="#" class="brand">
+                <div class="brand-logo">
+                    <svg width="36" height="36" viewBox="0 0 100 100" fill="none">
+                        <circle cx="35" cy="35" r="20" fill="#4A3728"/>
+                        <circle cx="65" cy="35" r="20" fill="#722F37"/>
+                        <circle cx="35" cy="65" r="20" fill="#8C454E"/>
+                        <circle cx="65" cy="65" r="20" fill="#70533E"/>
+                        <line x1="50" y1="20" x2="50" y2="80" stroke="#FAF6F0" stroke-width="5" stroke-linecap="round"/>
+                        <line x1="20" y1="50" x2="80" y2="50" stroke="#FAF6F0" stroke-width="5" stroke-linecap="round"/>
+                        <path d="M50 55 Q47 72 44 88" stroke="#C89D66" stroke-width="5" stroke-linecap="round" fill="none"/>
+                    </svg>
+                </div>
+                <span class="brand-name">GreyClover<span>Labs</span></span>
+            </a>
+
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <i data-lucide="menu"></i>
+            </button>
+
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#how-it-works">How It Works</a>
+                <a href="#compare">With vs. Without AI</a>
+                <a href="#why-us">Why Us</a>
+                <a href="#examples">Examples</a>
+                <a href="#contact" class="nav-cta">Get a Free Consultation</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- ===== HERO ===== -->
+        <section id="home" class="hero">
+            <div class="container hero-inner">
+                <div class="hero-text">
+                    <div class="hero-pill fade-up">
+                        <span class="dot-live"></span> AI is already changing business. Don't get left behind.
+                    </div>
+                    <h1 class="hero-h1 fade-up delay-1">
+                        We Make Your Business Run <span class="grad-text">Automatically.</span>
+                    </h1>
+                    <p class="hero-sub fade-up delay-2">
+                        Imagine your business handling emails, leads, reports, and customer questions — <strong>on its own, 24/7</strong> — while you focus on growth. That's what we build.
+                    </p>
+                    <div class="hero-btns fade-up delay-3">
+                        <a href="#contact" class="btn-primary-lg">Get a Free Consultation <i data-lucide="arrow-right"></i></a>
+                        <a href="#how-it-works" class="btn-ghost-lg">See How It Works</a>
+                    </div>
+                    <div class="hero-trust fade-up delay-4">
+                        <div class="trust-item"><i data-lucide="check-circle"></i> No tech knowledge required</div>
+                        <div class="trust-item"><i data-lucide="check-circle"></i> Results in 2–4 weeks</div>
+                        <div class="trust-item"><i data-lucide="check-circle"></i> Fraction of the cost</div>
+                    </div>
+                </div>
+
+                <div class="hero-visual fade-up delay-2">
+                    <!-- Live Business Dashboard Mockup -->
+                    <div class="dashboard-card">
+                        <div class="dash-header">
+                            <span class="dash-title">Your AI Business Assistant</span>
+                            <span class="dash-live"><span class="dot-live"></span>Live</span>
+                        </div>
+                        <div class="dash-tasks" id="dash-tasks">
+                            <!-- Tasks will be injected by JS -->
+                        </div>
+                        <div class="dash-footer">
+                            <span class="dash-stat"><i data-lucide="zap"></i> <span id="tasks-done">0</span> tasks done today</span>
+                            <span class="dash-stat"><i data-lucide="clock"></i> <span id="hours-saved">0</span>h saved</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ROI CALCULATOR SECTION ===== -->
+        <section id="roi-calculator" class="roi-section reveal">
+            <div class="container">
+                <div class="section-head">
+                    <span class="label-pill">AUTOMATION CALCULATOR</span>
+                    <h2>How much time and capital could you recover?</h2>
+                    <p>Input your team size and hours spent on manual work to see the estimated ROI of implementing custom AI systems.</p>
+                </div>
+                
+                <div class="roi-calculator-card">
+                    <div class="roi-inputs">
+                        <div class="slider-group">
+                            <div class="slider-header">
+                                <label for="team-size">Team Members Doing Repetitive Tasks</label>
+                                <span class="slider-value" id="team-value">5</span>
+                            </div>
+                            <input type="range" id="team-size" min="1" max="50" value="5" class="roi-slider">
+                            <div class="slider-labels">
+                                <span>1 member</span>
+                                <span>50 members</span>
+                            </div>
+                        </div>
+
+                        <div class="slider-group">
+                            <div class="slider-header">
+                                <label for="manual-hours">Hours per Person/Week on Manual Work</label>
+                                <span class="slider-value" id="hours-value">10h</span>
+                            </div>
+                            <input type="range" id="manual-hours" min="2" max="40" value="10" class="roi-slider">
+                            <div class="slider-labels">
+                                <span>2 hours</span>
+                                <span>40 hours</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="roi-results">
+                        <div class="roi-result-item">
+                            <span class="roi-result-label">Monthly Hours Recovered</span>
+                            <span class="roi-result-number" id="hours-saved-calc">173h</span>
+                        </div>
+                        <div class="roi-result-item">
+                            <span class="roi-result-label">Annual Operational Savings</span>
+                            <span class="roi-result-number gold" id="money-saved-calc">$72,744</span>
+                        </div>
+                        <div class="roi-action">
+                            <a href="#contact" class="btn-primary-lg submit-full">Claim Your Recovered Hours <i data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PAIN POINTS (Problem Statement) ===== -->
+        <section class="pain-section">
+            <div class="container">
+                <div class="pain-header reveal">
+                    <h2>Sound familiar?</h2>
+                    <p>These are the everyday problems that drain your time and your money.</p>
+                </div>
+                <div class="pain-grid">
+                    <div class="pain-card reveal">
+                        <div class="pain-icon"><i data-lucide="users"></i></div>
+                        <h4>Chasing leads manually</h4>
+                        <p>You or your team spend hours replying to every new inquiry one by one.</p>
+                    </div>
+                    <div class="pain-card reveal">
+                        <div class="pain-icon"><i data-lucide="file-text"></i></div>
+                        <h4>Drowning in paperwork</h4>
+                        <p>Reports, invoices, and follow-ups pile up and take forever to process.</p>
+                    </div>
+                    <div class="pain-card reveal">
+                        <div class="pain-icon"><i data-lucide="message-square"></i></div>
+                        <h4>Slow customer replies</h4>
+                        <p>Customers wait hours or days for answers — and some never come back.</p>
+                    </div>
+                    <div class="pain-card reveal">
+                        <div class="pain-icon"><i data-lucide="trending-down"></i></div>
+                        <h4>Missing growth opportunities</h4>
+                        <p>You're too busy putting out fires to focus on expanding your business.</p>
+                    </div>
+                </div>
+                <div class="pain-solution reveal">
+                    <div class="solution-line"></div>
+                    <p><strong>Grey Clover Labs fixes all of this for you — automatically.</strong></p>
+                    <div class="solution-line"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== HOW IT WORKS ===== -->
+        <section id="how-it-works" class="how-section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="label-pill">HOW IT WORKS</span>
+                    <h2>Think of it like hiring a team that never sleeps</h2>
+                    <p>We build smart AI systems that work inside your business — doing the repetitive tasks your team currently does by hand.</p>
+                </div>
+
+                <div class="steps-flow">
+                    <div class="step-item reveal">
+                        <div class="step-num">01</div>
+                        <div class="step-icon"><i data-lucide="search"></i></div>
+                        <h4>We Learn Your Business</h4>
+                        <p>We have a simple conversation about what tasks slow you down most — no technical knowledge needed.</p>
+                    </div>
+                    <div class="step-arrow"><i data-lucide="chevron-right"></i></div>
+                    <div class="step-item reveal">
+                        <div class="step-num">02</div>
+                        <div class="step-icon"><i data-lucide="settings"></i></div>
+                        <h4>We Build Your AI System</h4>
+                        <p>Our team builds a custom AI assistant tailored to your business processes in 2–4 weeks.</p>
+                    </div>
+                    <div class="step-arrow"><i data-lucide="chevron-right"></i></div>
+                    <div class="step-item reveal">
+                        <div class="step-num">03</div>
+                        <div class="step-icon"><i data-lucide="trending-up"></i></div>
+                        <h4>Your Business Runs Itself</h4>
+                        <p>Watch as tasks get handled automatically — leads, emails, reports, and more — around the clock.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== BEFORE vs AFTER SIMULATOR ===== -->
+        <section id="compare" class="compare-section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="label-pill">THE REAL DIFFERENCE</span>
+                    <h2>What changes when AI works for you?</h2>
+                    <p>Click any scenario below to see exactly what happens — with and without AI.</p>
+                </div>
+
+                <!-- Scenario Selector -->
+                <div class="scenario-tabs reveal">
+                    <button class="scen-btn active" data-scene="leads">📥 Getting Leads</button>
+                    <button class="scen-btn" data-scene="support">💬 Customer Support</button>
+                    <button class="scen-btn" data-scene="reports">📊 Business Reports</button>
+                    <button class="scen-btn" data-scene="followup">📧 Follow-Ups</button>
+                </div>
+
+                <!-- Split Comparison -->
+                <div class="compare-split reveal">
+                    <!-- WITHOUT AI -->
+                    <div class="compare-side without">
+                        <div class="side-label without-label">
+                            <i data-lucide="x-circle"></i> Without AI
+                        </div>
+                        <div class="compare-timeline" id="without-timeline">
+                            <!-- JS fills this -->
+                        </div>
+                        <div class="side-result without-result" id="without-result">
+                            <!-- JS fills this -->
+                        </div>
+                    </div>
+
+                    <!-- WITH AI -->
+                    <div class="compare-side with">
+                        <div class="side-label with-label">
+                            <i data-lucide="check-circle"></i> With Grey Clover AI
+                        </div>
+                        <div class="compare-timeline" id="with-timeline">
+                            <!-- JS fills this -->
+                        </div>
+                        <div class="side-result with-result" id="with-result">
+                            <!-- JS fills this -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Outcome Metrics Bar -->
+                <div class="outcome-bar reveal" id="outcome-bar">
+                    <!-- JS fills this -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== RESULTS / SOCIAL PROOF ===== -->
+        <section class="results-section">
+            <div class="container">
+                <div class="results-grid">
+                    <div class="result-stat reveal">
+                        <span class="result-num" data-target="90">0</span><span class="result-suf">%</span>
+                        <span class="result-label">Less time on repetitive tasks</span>
+                    </div>
+                    <div class="result-stat reveal">
+                        <span class="result-num" data-target="10">0</span><span class="result-suf">x</span>
+                        <span class="result-label">Faster response to customers</span>
+                    </div>
+                    <div class="result-stat reveal">
+                        <span class="result-num" data-target="40">0</span><span class="result-suf">%</span>
+                        <span class="result-label">More leads converted automatically</span>
+                    </div>
+                    <div class="result-stat reveal">
+                        <span class="result-num" data-target="24">0</span><span class="result-suf">/7</span>
+                        <span class="result-label">Your business runs non-stop</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== REAL WORLD EXAMPLES ===== -->
+        <section id="examples" class="examples-section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="label-pill">REAL EXAMPLES</span>
+                    <h2>Businesses just like yours, transformed</h2>
+                    <p>Here is exactly what we built for different types of businesses — and what changed.</p>
+                </div>
+
+                <div class="examples-grid">
+                    <div class="example-card reveal">
+                        <div class="ex-industry">🏢 Real Estate Agency</div>
+                        <h3>Problem: 3 staff members spent all day answering the same property questions</h3>
+                        <div class="ex-arrow"><i data-lucide="arrow-down"></i> What we did</div>
+                        <div class="ex-solution">
+                            Built an AI that answers all property inquiries 24/7, books viewings automatically, and sends follow-up reminders without any human involvement.
+                        </div>
+                        <div class="ex-result">
+                            <i data-lucide="trending-up"></i>
+                            <strong>Result:</strong> Staff freed to close deals. Response time went from 4 hours → 10 seconds.
+                        </div>
+                    </div>
+
+                    <div class="example-card reveal">
+                        <div class="ex-industry">🛒 E-Commerce Store</div>
+                        <h3>Problem: Orders and refund requests buried the team every day</h3>
+                        <div class="ex-arrow"><i data-lucide="arrow-down"></i> What we did</div>
+                        <div class="ex-solution">
+                            Built an AI that handles order status queries, processes simple refunds, and escalates complex cases to a human — automatically.
+                        </div>
+                        <div class="ex-result">
+                            <i data-lucide="trending-up"></i>
+                            <strong>Result:</strong> 70% of support tickets resolved with zero human effort. Team cut support time by half.
+                        </div>
+                    </div>
+
+                    <div class="example-card reveal">
+                        <div class="ex-industry">⚖️ Law Firm</div>
+                        <h3>Problem: Associates spent 6+ hours weekly pulling data for compliance reports</h3>
+                        <div class="ex-arrow"><i data-lucide="arrow-down"></i> What we did</div>
+                        <div class="ex-solution">
+                            Built an AI that reads documents, flags issues, and generates first-draft compliance reports — in minutes, not hours.
+                        </div>
+                        <div class="ex-result">
+                            <i data-lucide="trending-up"></i>
+                            <strong>Result:</strong> Reports that took 6 hours now take 8 minutes. 99.9% accuracy maintained.
+                        </div>
+                    </div>
+
+                    <div class="example-card reveal">
+                        <div class="ex-industry">🚚 Logistics Company</div>
+                        <h3>Problem: Sales team manually followed up on every quote — most were forgotten</h3>
+                        <div class="ex-arrow"><i data-lucide="arrow-down"></i> What we did</div>
+                        <div class="ex-solution">
+                            Built an AI that automatically sends follow-ups, tracks interest levels, and alerts the sales team only when a client is ready to buy.
+                        </div>
+                        <div class="ex-result">
+                            <i data-lucide="trending-up"></i>
+                            <strong>Result:</strong> 40% more quotes converted. Sales team now focuses only on warm, ready-to-close leads.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== WHY US ===== -->
+        <section id="why-us" class="why-section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="label-pill">WHY GREY CLOVER LABS</span>
+                    <h2>Why choose us over anyone else?</h2>
+                </div>
+
+                <div class="compare-table reveal">
+                    <div class="ct-header">
+                        <div class="ct-feature"></div>
+                        <div class="ct-col gcl"><div class="gcl-badge">GreyClover Labs</div></div>
+                        <div class="ct-col other">Big Agencies</div>
+                        <div class="ct-col other">Hiring In-House</div>
+                    </div>
+                    <div class="ct-row">
+                        <div class="ct-feature">Affordable pricing</div>
+                        <div class="ct-col gcl"><i data-lucide="check" class="icon-yes"></i></div>
+                        <div class="ct-col other"><i data-lucide="x" class="icon-no"></i></div>
+                        <div class="ct-col other"><i data-lucide="x" class="icon-no"></i></div>
+                    </div>
+                    <div class="ct-row">
+                        <div class="ct-feature">Built specifically for your business</div>
+                        <div class="ct-col gcl"><i data-lucide="check" class="icon-yes"></i></div>
+                        <div class="ct-col other"><i data-lucide="minus" class="icon-maybe"></i></div>
+                        <div class="ct-col other"><i data-lucide="check" class="icon-yes"></i></div>
+                    </div>
+                    <div class="ct-row">
+                        <div class="ct-feature">No tech knowledge required from you</div>
+                        <div class="ct-col gcl"><i data-lucide="check" class="icon-yes"></i></div>
+                        <div class="ct-col other"><i data-lucide="x" class="icon-no"></i></div>
+                        <div class="ct-col other"><i data-lucide="x" class="icon-no"></i></div>
+                    </div>
+                    <div class="ct-row">
+                        <div class="ct-feature">Ready in 2–4 weeks</div>
+                        <div class="ct-col gcl"><i data-lucide="check" class="icon-yes"></i></div>
+                        <div class="ct-col other"><i data-lucide="x" class="icon-no"></i></div>
+                        <div class="ct-col other"><i data-lucide="x" class="icon-no"></i></div>
+                    </div>
+                    <div class="ct-row">
+                        <div class="ct-feature">Ongoing support included</div>
+                        <div class="ct-col gcl"><i data-lucide="check" class="icon-yes"></i></div>
+                        <div class="ct-col other"><i data-lucide="minus" class="icon-maybe"></i></div>
+                        <div class="ct-col other"><i data-lucide="check" class="icon-yes"></i></div>
+                    </div>
+                    <div class="ct-row">
+                        <div class="ct-feature">Scales as your business grows</div>
+                        <div class="ct-col gcl"><i data-lucide="check" class="icon-yes"></i></div>
+                        <div class="ct-col other"><i data-lucide="minus" class="icon-maybe"></i></div>
+                        <div class="ct-col other"><i data-lucide="x" class="icon-no"></i></div>
+                    </div>
+                </div>
+
+                <div class="affordable-callout reveal">
+                    <div class="afford-icon"><i data-lucide="piggy-bank"></i></div>
+                    <div class="afford-text">
+                        <h3>Priced for growing businesses — not Fortune 500 companies</h3>
+                        <p>Hiring a full-time AI developer costs $8,000–$15,000/month. We deliver the same results for a fraction of that cost — with a team that's been doing this for years.</p>
+                    </div>
+                    <a href="#contact" class="btn-primary-lg">Get a Custom Quote</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT ===== -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="contact-inner reveal">
+                    <div class="contact-left">
+                        <span class="label-pill">FREE CONSULTATION</span>
+                        <h2>Let's talk about your business</h2>
+                        <p>Tell us what's slowing you down. We'll show you exactly how AI can fix it — for free, no commitment.</p>
+                        <div class="contact-promises">
+                            <div class="promise"><i data-lucide="clock"></i> 30-minute free call</div>
+                            <div class="promise"><i data-lucide="shield"></i> No sales pressure</div>
+                            <div class="promise"><i data-lucide="lightbulb"></i> You'll leave with actionable ideas</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-wrap">
+                        <form id="contact-form">
+                            <div class="field-group">
+                                <label>Your Name</label>
+                                <input type="text" id="f-name" placeholder="John Smith" required>
+                            </div>
+                            <div class="field-group">
+                                <label>Your Email</label>
+                                <input type="email" id="f-email" placeholder="john@company.com" required>
+                            </div>
+                            <div class="field-group">
+                                <label>Type of Business</label>
+                                <select id="f-biz">
+                                    <option value="">Select your industry...</option>
+                                    <option>E-Commerce</option>
+                                    <option>Real Estate</option>
+                                    <option>Legal / Finance</option>
+                                    <option>Logistics / Supply Chain</option>
+                                    <option>Healthcare</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="field-group">
+                                <label>What's your biggest time-waster right now?</label>
+                                <textarea id="f-message" rows="3" placeholder="e.g. We spend 3 hours per day manually replying to customer emails..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary-lg submit-full" id="submit-btn">
+                                Book My Free Call <i data-lucide="arrow-right"></i>
+                            </button>
+                        </form>
+                        <div class="form-success" id="form-success" style="display:none">
+                            <div class="success-icon"><i data-lucide="check-circle"></i></div>
+                            <h3>We'll be in touch within 24 hours!</h3>
+                            <p>Check your inbox. Our team will reach out to schedule your free consultation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <div class="brand">
+                    <div class="brand-logo-sm">
+                        <svg width="28" height="28" viewBox="0 0 100 100" fill="none">
+                            <circle cx="35" cy="35" r="20" fill="#4A3728"/>
+                            <circle cx="65" cy="35" r="20" fill="#722F37"/>
+                            <circle cx="35" cy="65" r="20" fill="#8C454E"/>
+                            <circle cx="65" cy="65" r="20" fill="#70533E"/>
+                        </svg>
+                    </div>
+                    <span class="brand-name">GreyClover<span>Labs</span></span>
+                </div>
+                <p>We automate your business so you can focus on growing it.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#how-it-works">How It Works</a>
+                <a href="#compare">AI Comparison</a>
+                <a href="#examples">Examples</a>
+                <a href="#why-us">Why Us</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Grey Clover Labs. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js?v=4.0"></script>
+</body>
+</html>

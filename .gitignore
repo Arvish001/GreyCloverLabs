@@ -1,0 +1,26 @@
+# OS artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor dirs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (if ever added)
+node_modules/
+npm-debug.log*
+
+# Build outputs
+dist/
+build/
+
+# Env files
+.env
+.env.local
+.env.production
+
+# Vercel local
+.vercel/
